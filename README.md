@@ -10,8 +10,25 @@ This plugin is for use with [Cordova](http://incubator.apache.org/cordova/) and 
 
 1. add the com.cordova.gcm, com.google.android.gcm, and com.plugin.GCM packages to your project.
 
-2. Modify your AndroidManifest.xml to include the following lines:
+2. Modify your AndroidManifest.xml to include the following lines to your manifest tag:
 
-<code>
-  test
-</code>
+  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+  <permission android:name="com.deltek.konamobile.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+  <uses-permission android:name="com.deltek.konamobile.permission.C2D_MESSAGE" />
+
+and these following lines to your application tag:
+
+  <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+      <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+      <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+      <category android:name="com.deltek.konamobile" />
+    </intent-filter>
+  </receiver>
+
+  <service android:name="com.deltek.konamobile.GCMIntentService" />
+
+
