@@ -1,8 +1,10 @@
-package com.cordova.c2dm;
+package com.cordova.gcm;
 
-//import android.app.Activity;
+import android.app.Activity;
 import android.os.Bundle;
+import com.google.android.gcm.GCMRegistrar;
 import org.apache.cordova.*;
+import android.util.Log;
 
 public class App extends DroidGap {
 
@@ -12,7 +14,19 @@ public class App extends DroidGap {
 
       super.onCreate(savedInstanceState);
 
+      this.appView.getSettings().setPluginsEnabled(true);
+
       super.loadUrl("file:///android_asset/www/index.html");
 
+      GCMRegistrar.checkDevice(this);
+      GCMRegistrar.checkManifest(this);
+      final String regId = GCMRegistrar.getRegistrationId(this);
+      if (regId.equals("")) {
+        Log.v(TAG, "registering!");
+        GCMRegistrar.register(this, "your_app_id");
+      } else {
+        Log.v(TAG, "Already registered: " + regId);
+      }
     }
 }
+

@@ -16,5 +16,5 @@
     <plugin name="Temperature" value="com.phonegap.TempListener"/>
     <plugin name="FileTransfer" value="com.phonegap.FileTransfer"/>
     <plugin name="Capture" value="com.phonegap.Capture"/>
-    <plugin name="C2DMPlugin" value="com.plugin.C2DM.C2DMPlugin" />
+    <plugin name="GCMPlugin" value="com.plugin.GCM.GCMPlugin" />
 </plugins>

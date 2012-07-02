@@ -23,11 +23,13 @@ GCM.prototype.register = function(appID, eventCallback, successCallback, failure
     return;
   }
 
+  alert('GCM.register() called!');
+
     return Cordova.exec(successCallback,      //Callback which will be called when directory listing is successful
               failureCallback,       //Callback which will be called when directory listing encounters an error
               'GCMPlugin',        //Telling Cordova that we want to run "DirectoryListing" Plugin
               'register',             //Telling the plugin, which action we want to perform
-              [{ email: senderEmail, ecb : eventCallback }]);          //Passing a list of arguments to the plugin,
+              [{ email: appID, ecb : eventCallback }]);          //Passing a list of arguments to the plugin,
                           // The ecb variable is the STRING name of your javascript routine to be used for callbacks
                           // You can add more to validate that eventCallback is a string and not an object
 };
@@ -35,7 +37,7 @@ GCM.prototype.register = function(appID, eventCallback, successCallback, failure
 
 GCM.prototype.unregister = function( successCallback, failureCallback ) {
 
-
+  alert('GCM.unregister() called!');
     return cordova.exec(successCallback,      //Callback which will be called when directory listing is successful
               failureCallback,       //Callback which will be called when directory listing encounters an error
               'GCMPlugin',        //Telling Cordova that we want to run "DirectoryListing" Plugin
@@ -53,8 +55,4 @@ cordova.addConstructor(function() {
   //Register the javascript plugin with Cordova
   cordova.addPlugin('GCM', new GCM());
 
-  //Register the native class of plugin with Cordova
-  PluginManager.addService("GCMPlugin","com.plugin.GCM.GCMPlugin");
-
-  //alert( "added Service GCMPlugin");
 });

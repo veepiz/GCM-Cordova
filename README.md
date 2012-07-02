@@ -32,7 +32,7 @@ Modify your AndroidManifest.xml to include the following lines to your applicati
       </intent-filter>
     </receiver>
 
-    <service android:name="your_app_package.GCMIntentService" />
+    <service android:name=".GCMIntentService" />
 
 
 
