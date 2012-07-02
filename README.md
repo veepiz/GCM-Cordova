@@ -12,6 +12,8 @@ This plugin is for use with [Cordova](http://incubator.apache.org/cordova/) and 
 
 2. Modify your AndroidManifest.xml to include the following lines to your manifest tag:
 
+<code>
+
   <uses-permission android:name="android.permission.GET_ACCOUNTS" />
   <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -19,7 +21,11 @@ This plugin is for use with [Cordova](http://incubator.apache.org/cordova/) and 
   <permission android:name="com.deltek.konamobile.permission.C2D_MESSAGE" android:protectionLevel="signature" />
   <uses-permission android:name="com.deltek.konamobile.permission.C2D_MESSAGE" />
 
+</code>
+
 and these following lines to your application tag:
+
+<code>
 
   <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
     <intent-filter>
@@ -31,4 +37,4 @@ and these following lines to your application tag:
 
   <service android:name="com.deltek.konamobile.GCMIntentService" />
 
-
+</code>
