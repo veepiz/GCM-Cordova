@@ -35,4 +35,17 @@ Modify your AndroidManifest.xml to include the following lines to your applicati
     <service android:name=".GCMIntentService" />
 
 
+Modify your res/xml/plugins.xml to include the following line in order to tell Cordova to include this plugin and where it can be found:
 
+    <plugin name="GCMPlugin" value="com.plugin.GCM.GCMPlugin" />
+
+
+Follow the instructions [here](http://developer.android.com/guide/google/gcm/gs.html) on creating a Google API project to obtain a GCM sender ID. Replace all instances of "your_sender_id" in this plugin with that id.
+
+
+Add the GCMPlugin.js script to your assets/www folder (or javascripts folder, wherever you want really) and include it in your main index.html file.
+
+    <script type="text/javascript" charset="utf-8" src="GCMPlugin.js"></script>
+
+
+Included is an example of how to interact with this plugin in the CORDOVA_GCM_script.js file.

@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import com.plugin.gcm.GCMPlugin;
-  
+
 
 public class GCMIntentService extends GCMBaseIntentService {
 
@@ -43,7 +43,7 @@ public class GCMIntentService extends GCMBaseIntentService {
     catch( JSONException e)
     {
       // No message to the user is sent, JSON failed
-          Log.e(ME + ":onRegisterd", "JSON exception");
+      Log.e(ME + ":onRegisterd", "JSON exception");
     }
   }
 
@@ -55,6 +55,36 @@ public class GCMIntentService extends GCMBaseIntentService {
   @Override
   protected void onMessage(Context context, Intent intent) {
     Log.d(TAG, "onMessage - context: " + context);
+
+    // Extract the payload from the message
+    Bundle extras = intent.getExtras();
+    if (extras != null) {
+      try
+      {
+        Log.v(ME + ":onMessage extras ", extras.getString("message"));
+
+        JSONObject json;
+        json = new JSONObject().put("event", "message");
+
+
+        // My application on my host server sends back to "EXTRAS" variables message and msgcnt
+        // Depending on how you build your server app you can specify what variables you want to send
+        //
+        json.put("message", extras.getString("message"));
+        json.put("msgcnt", extras.getString("msgcnt"));
+
+        Log.v(ME + ":onMessage ", json.toString());
+
+        GCMPlugin.sendJavascript( json );
+        // Send the MESSAGE to the Javascript application
+      }
+      catch( JSONException e)
+      {
+        Log.e(ME + ":onMessage", "JSON exception");
+      }        	
+    }
+
+
   }
 
   @Override

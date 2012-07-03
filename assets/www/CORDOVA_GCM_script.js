@@ -19,7 +19,7 @@ document.addEventListener('deviceready', function() {
   // This is the Cordova deviceready event. Once this is called Cordova is available to be used
   alert('deviceready event received' );
 
-  alert('calling GCMRegistrar.register, register our appID with Google' );
+  alert('calling GCMRegistrar.register, register our Sender ID with Google' );
 
 
   gApp.DeviceReady = true;
@@ -32,9 +32,9 @@ document.addEventListener('deviceready', function() {
   // The last two parms are used by Cordova, they are the callback routines if the call is successful or fails
   //
   // CHANGE: your_app_id
-  // TO: what ever your GCM authorized appId is
+  // TO: what ever your GCM authorized senderId is
   //
-  window.plugins.GCM.register("your_app_id", "GCM_Event", GCM_Success, GCM_Fail );
+  window.plugins.GCM.register("your_sender_id", "GCM_Event", GCM_Success, GCM_Fail );
 
 }, false );
 
@@ -78,7 +78,7 @@ GCM_Event(e)
     // You will NOT receive any messages unless you build a HOST server application to send
     // Messages to you, This is just here to show you how it might work
 
-    alert('MESSAGE -> MSG:' + e.msg);
+    alert('MESSAGE -> MSG:' + e.message);
 
     alert('MESSAGE -> MSGCNT:' + e.msgcnt);
 

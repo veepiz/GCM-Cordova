@@ -31,7 +31,7 @@ public class GCMPlugin extends Plugin {
 
   public static Plugin gwebView;
   private static String gECB;
-  private static String gAppID;
+  private static String gSenderID;
 
   @Override
   public PluginResult execute(String action, JSONArray data, String callbackId)
@@ -54,11 +54,11 @@ public class GCMPlugin extends Plugin {
         Log.v(ME + ":execute", "jo=" + jo.toString());
 
         gECB = (String)jo.get("ecb");
-        gAppID = (String)jo.get("appID");
+        gSenderID = (String)jo.get("senderID");
 
-        Log.v(ME + ":execute", "ECB="+gECB+" appID="+gAppID );
+        Log.v(ME + ":execute", "ECB="+gECB+" senderID="+gSenderID );
 
-        GCMRegistrar.register(this.ctx.getContext(), gAppID);
+        GCMRegistrar.register(this.ctx.getContext(), gSenderID);
 
 
         Log.v(ME + ":execute", "GCMRegistrar.register called ");
