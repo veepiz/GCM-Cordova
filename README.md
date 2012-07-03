@@ -8,7 +8,7 @@ This plugin is for use with [Cordova](http://incubator.apache.org/cordova/) and 
 
 ## Installation
 
-Add the com.cordova.gcm, com.google.android.gcm, and com.plugin.GCM packages to your project.
+Add the com.google.android.gcm and com.plugin.GCM packages to your project. Add the GCMIntentService.java file to your applications main package.
 
 Modify your AndroidManifest.xml to include the following lines to your manifest tag, replacing your_app_package with your app's package path:
 
