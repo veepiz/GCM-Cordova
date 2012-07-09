@@ -1,4 +1,4 @@
-package com.plugin.gcm;
+package com.plugin.GCM;
 
 
 //import java.io.*;
