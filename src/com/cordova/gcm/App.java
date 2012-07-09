@@ -17,15 +17,7 @@ public class App extends DroidGap {
 
       super.loadUrl("file:///android_asset/www/index.html");
 
-      GCMRegistrar.checkDevice(this);
-      GCMRegistrar.checkManifest(this);
-      final String regId = GCMRegistrar.getRegistrationId(this);
-      if (regId.equals("")) {
-        Log.v(TAG, "registering!");
-        GCMRegistrar.register(this, "your_sender_id");
-      } else {
-        Log.v(TAG, "Already registered: " + regId);
-      }
+      
     }
 }
 
