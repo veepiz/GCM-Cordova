@@ -3,12 +3,11 @@ package com.cordova.gcm;
 import com.google.android.gcm.*;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import com.plugin.gcm.GCMPlugin;
+import com.plugin.GCM.GCMPlugin;
 
 
 public class GCMIntentService extends GCMBaseIntentService {

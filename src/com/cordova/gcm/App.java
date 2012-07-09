@@ -1,6 +1,5 @@
 package com.cordova.gcm;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.google.android.gcm.GCMRegistrar;
 import org.apache.cordova.*;
@@ -13,7 +12,7 @@ public class App extends DroidGap {
     public void onCreate(Bundle savedInstanceState) {
 
       super.onCreate(savedInstanceState);
-
+      super.init();
       this.appView.getSettings().setPluginsEnabled(true);
 
       super.loadUrl("file:///android_asset/www/index.html");
