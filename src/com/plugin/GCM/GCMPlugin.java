@@ -92,7 +92,9 @@ public class GCMPlugin extends Plugin {
     String _d =  "javascript:"+gECB+"(" + _json.toString() + ")";
         Log.v(ME + ":sendJavascript", _d);
 
-        gwebView.sendJavascript( _d );
+        if (gECB != null ) {
+          gwebView.sendJavascript( _d );
+        }
   }
 
 
