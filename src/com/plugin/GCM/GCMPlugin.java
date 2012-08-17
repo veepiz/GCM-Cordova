@@ -33,7 +33,8 @@ public class GCMPlugin extends Plugin {
   private static String gECB;
   private static String gSenderID;
 
-  @Override
+  @SuppressWarnings("deprecation")
+@Override
   public PluginResult execute(String action, JSONArray data, String callbackId)
   {
 

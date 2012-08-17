@@ -1,4 +1,4 @@
-//alert( localStorage.site );
+
 gApp = new Array();
 
 gApp.deviceready = false;
@@ -17,9 +17,9 @@ window.onbeforeunload  =  function(e) {
 
 document.addEventListener('deviceready', function() {
   // This is the Cordova deviceready event. Once this is called Cordova is available to be used
-  alert('deviceready event received' );
+  $("#app-status-ul").append('<li>deviceready event received</li>' );
 
-  alert('calling GCMRegistrar.register, register our Sender ID with Google' );
+  $("#app-status-ul").append('<li>calling GCMRegistrar.register, register our Sender ID with Google</li>' );
 
 
   gApp.DeviceReady = true;
@@ -34,7 +34,7 @@ document.addEventListener('deviceready', function() {
   // CHANGE: your_app_id
   // TO: what ever your GCM authorized senderId is
   //
-  window.GCM.register("your_sender_id", "GCM_Event", GCM_Success, GCM_Fail );
+  window.GCM.register("<Your GCM Sender ID>", "GCM_Event", GCM_Success, GCM_Fail );
 
 }, false );
 
@@ -43,7 +43,7 @@ function
 GCM_Event(e)
 {
 
-  alert('EVENT -> RECEIVED:' + e.event);
+  $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
 
 
   switch( e.event )
@@ -54,7 +54,7 @@ GCM_Event(e)
     gApp.gcmregid = e.regid;
     if ( gApp.gcmregid.length > 0 )
     {
-      alert('REGISTERED -> REGID:' + e.regid);
+      $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
 
 
       // ==============================================================================
@@ -78,9 +78,9 @@ GCM_Event(e)
     // You will NOT receive any messages unless you build a HOST server application to send
     // Messages to you, This is just here to show you how it might work
 
-    alert('MESSAGE -> MSG:' + e.message);
+    $("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.message + '</li>');
 
-    alert('MESSAGE -> MSGCNT:' + e.msgcnt);
+    $("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.msgcnt + '</li>');
 
 
     break;
@@ -88,14 +88,14 @@ GCM_Event(e)
 
   case 'error':
 
-    alert('ERROR -> MSG:' + e.msg);
+    $("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
 
     break;
 
 
 
   default:
-    alert('EVENT -> Unknown, an event was received and we do not know what it is');
+    $("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
 
     break;
   }
@@ -104,16 +104,16 @@ GCM_Event(e)
 function
 GCM_Success(e)
 {
-  alert('GCM_Success -> We have successfully registered and called the GCM plugin, waiting for GCM_Event:reistered -> REGID back from Google');
+  $("#app-status-ul").append('<li>GCM_Success -> We have successfully registered and called the GCM plugin, waiting for GCM_Event:registered -> REGID back from Google</li>');
 
 }
 
 function
 GCM_Fail(e)
 {
-  alert('GCM_Fail -> GCM plugin failed to register');
+  $("#app-status-ul").append('<li>GCM_Fail -> GCM plugin failed to register</li>');
 
-  alert('GCM_Fail -> ' + e.msg);
+  $("#app-status-ul").append('<li>GCM_Fail -> ' + e.msg + '</li>');
 
 }
 
