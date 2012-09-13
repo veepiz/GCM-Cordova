@@ -48,4 +48,9 @@ Add the GCMPlugin.js script to your assets/www folder (or javascripts folder, wh
     <script type="text/javascript" charset="utf-8" src="GCMPlugin.js"></script>
 
 
-In the CORDOVA_GCM_script.js script you will see an example of how to interact with the GCM plugin. Modify it to suit your needs.
+In the CORDOVA_GCM_script.js script you will see an example of how to interact with the GCMplugin. Modify it to suit your needs.
+
+
+## Notes
+
+If you run this demo using the emulator you will not receive notifications from GCM. You need to run it on an actual device to receive messages.
