@@ -6,6 +6,8 @@
 
 This plugin is for use with [Cordova](http://incubator.apache.org/cordova/) and in an Android project to enable push notifications via [Google's GCM (Google Cloud Messaging) service](http://developer.android.com/guide/google/gcm/index.html). Previously, push notifications on Android used C2DM, but that [has since been deprecated](http://developer.android.com/guide/google/gcm/c2dm.html).
 
+!!Important - this demo will not go through the complete registration process on an emulator. You must use an actual device for the full demo (and your project) to work!!
+
 ## Installation
 
 Add the com.google.android.gcm and com.plugin.GCM packages to your project. Add the GCMIntentService.java file to your application's main package.
