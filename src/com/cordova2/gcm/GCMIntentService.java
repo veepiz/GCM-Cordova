@@ -65,7 +65,56 @@ public class GCMIntentService extends GCMBaseIntentService {
         JSONObject json;
         json = new JSONObject().put("event", "message");
 
+  			// create status-bar notification
+				// the message we want to display
+				CharSequence tickerText;
+				final String NOTIFICATION_BOOT = "notificationBoot";
+				try {
+					tickerText = extras.getString("message");
+				} catch (NullPointerException npe) {
+					tickerText = "Dude, no key=msg has been provided. ";
+				}
 
+				NotificationManager nm = (NotificationManager) context
+						.getApplicationContext().getSystemService(
+								Context.NOTIFICATION_SERVICE);
+				int icon = R.drawable.ic_launcher;
+				Notification notification = new Notification(icon, tickerText,
+						System.currentTimeMillis());
+                notification.defaults = Notification.DEFAULT_SOUND;
+				notification.flags = Notification.DEFAULT_LIGHTS
+						| Notification.FLAG_AUTO_CANCEL;
+
+				Intent mainIntent = new Intent(Intent.ACTION_MAIN);
+				mainIntent.setClass(context, MainActivity.class);
+				mainIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+				mainIntent.putExtras(intent.getExtras());
+				mainIntent.putExtra(NOTIFICATION_BOOT, true);
+
+				// Intent that is called once user clicks on notification
+				PendingIntent contentIntent = PendingIntent.getActivity(
+						context.getApplicationContext(), 0, mainIntent,
+						PendingIntent.FLAG_UPDATE_CURRENT);
+				notification.setLatestEventInfo(context, "Veepiz", tickerText,
+						contentIntent);
+                
+				nm.notify(1, notification);
+
+				// display a toast to the user to inform him on the incoming
+				// notification
+
+				LayoutInflater inflater = LayoutInflater.from(context
+						.getApplicationContext());
+				View layout = inflater.inflate(R.layout.notification, null);
+				ImageView image = (ImageView) layout.findViewById(R.id.image);
+				image.setImageResource(R.drawable.icon_small);
+				TextView text = (TextView) layout.findViewById(R.id.text);
+				text.setText(tickerText);
+				Toast toast = new Toast(context.getApplicationContext());
+				toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+				toast.setDuration(Toast.LENGTH_LONG);
+				toast.setView(layout);
+				toast.show();
         // My application on my host server sends back to "EXTRAS" variables message and msgcnt
         // Depending on how you build your server app you can specify what variables you want to send
         //
