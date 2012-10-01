@@ -3,10 +3,21 @@ package com.cordova2.gcm;
 import com.google.android.gcm.*;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.view.Gravity;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.plugin.GCM.GCMPlugin;
 
 
