@@ -106,7 +106,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 				PendingIntent contentIntent = PendingIntent.getActivity(
 						context.getApplicationContext(), 0, mainIntent,
 						PendingIntent.FLAG_UPDATE_CURRENT);
-				notification.setLatestEventInfo(context, "Veepiz", tickerText,
+				notification.setLatestEventInfo(context, "<Veepiz>", tickerText,
 						contentIntent);
                 
 				nm.notify(1, notification);
